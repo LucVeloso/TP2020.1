@@ -1,0 +1,60 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    string frase;
+    int caracter;
+    char resp;
+
+    do
+    {
+        int vogais = 0,
+            consoantes = 0,
+            digitos = 0,
+            brancos = 0,
+            especiais = 0;
+
+        cout << "Informe a sua frase!" << endl;
+        
+        getline(cin, frase);
+
+        for(int i = 0; i <= frase.size(); i++)
+        {
+            caracter = frase[i];
+            cout << i;
+
+            if(frase[i] == ' ') brancos++;
+
+            else if (caracter >= 48 and caracter <= 57) digitos++;
+
+            else if ((caracter >= 21 and caracter <= 47) or
+                     (caracter >= 58 and caracter <= 64) or
+                     (caracter >= 91 and caracter <= 96) or
+                     (caracter >= 123 and caracter <= 126)) especiais++;     
+
+            else if ((caracter >= 65 and caracter <= 90) or
+                     (caracter >= 97 and caracter <= 122))
+            {
+                if(caracter == 65 or caracter == 69 or caracter == 73 or caracter == 79 or caracter == 85 or
+                   caracter == 97 or caracter == 101 or caracter == 105 or caracter == 111 or caracter == 117) vogais++;
+                else consoantes++;
+            }
+        }
+
+        cout << "Sua frase tem: " << endl;
+        cout << "Vogais: " << vogais << endl;
+        cout << "Consoantes: " << consoantes << endl;
+        cout << "Digitos: " << digitos << endl;
+        cout << "Espacos em branco: " << brancos << endl;
+        cout << "Caracteres especiais: " << especiais << endl;
+
+        cout << "Verificar nova frase (S/N)? " << endl;
+        cin >> resp;
+        cin.ignore();
+
+    } while ( resp == 'S' or resp == 's');
+
+    return 0;
+}
